@@ -1,5 +1,7 @@
 require 'date'
 
+require 'json'
+
 require 'sinatra'
 require 'sinatra/reloader'
 require 'pg'
@@ -98,4 +100,32 @@ post '/food_items' do
   food_item.user_id = current_user.id
   food_item.save
   redirect to '/food_items'
+end
+
+get '/edit' do
+  erb :edit
+end
+
+put '/edit' do
+  user = current_user
+  user.name = params[:name]
+  user.age = params[:age]
+  user.weight = params[:weight]
+  user.height = params[:height]
+  user.gender = params[:gender]
+  user.save
+  redirect to '/dashboard'
+end
+
+delete '/food_items' do
+  params[:ids].each do |id|
+    Food_Item.destroy id
+  end
+  {success: true}.to_json
+end
+
+delete '/dashboard' do
+  user = current_user
+  user.delete
+  redirect to '/'
 end

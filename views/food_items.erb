@@ -37,8 +37,7 @@
   <% end %>
 </table>
 <form action="/food_items" method="post">
-  <input type="hidden" value = "delete" name = "_method">
-  <button type = "submit" name="delete">Delete selected</button>
+  <button id="deleteButton" type = "button" name="delete">Delete selected</button>
 </form>
 
 
@@ -67,5 +66,27 @@
     $('#calc_display1').text(Math.round(calculatedVal1));
     $( "#dialog" ).dialog();
     });
+  $('#deleteButton').on('click', function(){
+    var checked = $('table input:checked');
+    var food_ids = [];
+    for(var i = 0; i  < checked.length; i++){
+      food_ids.push($(checked[i]).val());
+    }
+    $.ajax({
+      url: '/food_items',
+      method: 'DELETE',
+      data: {ids: food_ids},
+      success: function(data){
+        console.log(data);
+        // Removing the elements from the table so I can't try to delete the again.
+        checked.each(function(index, element){
+          $(element).parent().parent().remove();
+        });
 
+      },
+      error: function(data){
+        console.log(data);
+      }
+    });
+  });
 </script>
