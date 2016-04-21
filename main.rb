@@ -1,5 +1,5 @@
 require 'date'
-
+require 'pry'
 require 'json'
 
 require 'sinatra'
@@ -9,6 +9,9 @@ require 'pg'
 require "./db_config"
 require './models/user'
 require './models/food_item'
+
+require 'fatsecret'
+FatSecret.init('12c2ef215e604e3f8ed6853dfe478390','7cb2062d9146486eb1a137ace3819a2a')
 
 enable :sessions
 
@@ -128,4 +131,19 @@ delete '/dashboard' do
   user = current_user
   user.delete
   redirect to '/'
+end
+
+post '/food' do
+  results = FatSecret.search_food(params[:food_name])
+  @result = results["foods"]["food"]
+  erb :food
+end
+
+get '/food' do
+  erb :food
+end
+
+get '/food_details' do
+  @single_result = FatSecret.food(params[:food_id])["food"]
+  erb :food_details
 end

@@ -1,0 +1,14 @@
+<a href="/food">Back to Food Search</a></br>
+<a href="/food_items">Back to Food log</a>
+
+<div>
+
+  <% if @single_result != nil %>
+    <span><h3><%= @single_result["food_name"] %> </span></h3></br>
+    <% @single_result["servings"]["serving"].each do |x| %>
+      <span>Serving size: <%= x["serving_description"] %></span></br>
+      <span>Calories: <%= x["calories"] %></span></br>
+    <% end %>
+  <% end %>
+
+</div>

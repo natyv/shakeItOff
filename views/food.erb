@@ -1,0 +1,21 @@
+
+
+<form action="/food" method="post">
+
+<p>  <label for="">Food name</label>
+  <input type="text" name="food_name"> </p>
+
+
+<button>Get it</button>
+
+</form>
+<div>
+
+  <% if @result != nil %>
+    <% @result.each do |x|  %>
+      <a href="/food_details?food_id=<%= x["food_id"].to_i %>" >
+        <span><%= x["brand_name"] %> <%=x["food_name"]%></span>
+      </a></br>
+    <% end %>
+  <% end %>
+</div>
