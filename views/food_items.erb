@@ -1,0 +1,71 @@
+<form action="/food_items" method = "post">
+
+<p>  <label for="">Food name</label>
+  <input type="text" name="name"> </p>
+
+<p>  <label for="">Calories</label>
+  <input type="text" name="calories"> </p>
+
+<p>Date: <input type="date" name="date"></p>
+
+<button>Save</button>
+
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Select</th>
+      <th>Food Item</th>
+      <th>Calories</th>
+      <th>Date consumed</th>
+      <th>Walking required(in mins)</th>
+      <th>Running required(in mins)</th>
+    </tr>
+  </thead>
+  <% @food_items.each do |food_item| %>
+  <tbody>
+    <tr>
+      <td><input type="checkbox" name="select" value="<%= food_item.id %>"></td>
+      <td><%= food_item.name %></td>
+      <td><a href="#" class ="opener"><%= food_item.calories %></a></td>
+      <td><%= food_item.day %></td>
+      <td><%= (food_item.calories/ (2.2*current_user.weight*0.03)).round(1) %></td>
+      <td><%= (food_item.calories/ (2.2*current_user.weight*0.07)).round(1) %></td>
+    </tr>
+  </tbody>
+  <% end %>
+</table>
+<form action="/food_items" method="post">
+  <input type="hidden" value = "delete" name = "_method">
+  <button type = "submit" name="delete">Delete selected</button>
+</form>
+
+
+<div id="dialog" title="Shake it off!" style="display: none">
+  <p>
+    <span id="calc_display"></span>
+     mins
+    <span><img src="./stylesheets/images/walking.png"></span>
+  </p>
+  <p>
+    <span id="calc_display1"></span>
+     mins
+    <span><img src="./stylesheets/images/running.png"></span></p>
+</div>
+
+<div id= "user_weight" style="display:none"><%=current_user.weight%></div>
+
+<script>
+
+  $( ".opener" ).click(function(e) {
+    var weight = Number($('#user_weight').text());
+    var openerVal = Number($(this).text());
+    var calculatedVal =  openerVal / (2.2 * weight * 0.03);
+    var calculatedVal1 = openerVal / (2.2 * weight * 0.07);
+    $('#calc_display').text(Math.round(calculatedVal));
+    $('#calc_display1').text(Math.round(calculatedVal1));
+    $( "#dialog" ).dialog();
+    });
+
+</script>

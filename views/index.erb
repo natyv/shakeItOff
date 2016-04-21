@@ -1,0 +1,36 @@
+<h1>Shake It Off</h1>
+
+<h2>User Details</h2>
+<p>Name : <%= current_user.name %></p>
+<p>Age : <%= current_user.age %></p>
+<p>Weight(in kgs) : <%= current_user.weight %></p>
+<p>Height(in cms) : <%= current_user.height %></p>
+<p>Gender : <%= current_user.gender %></p>
+
+<p>Your Base Metabolic Rate is <%= bmr %> calories per day</p>
+
+<p>Choose your activity level</p>
+<select name="activity_level" id="target">
+  <option value="1.2">Sedentary</option>
+  <option value="1.375">Lightly active</option>
+  <option value="1.55">Moderately active</option>
+  <option value="1.95">Very active</option>
+</select>
+<div></div>
+
+<script>
+$( "select" )
+  .change(function() {
+    str = "";
+    $( "select option:selected" ).each(function() {
+      str = $(this).val();
+      str = parseFloat(str) * <%= bmr %>;
+      str = str.toString();
+  });
+  $( "div" ).text( str );
+})
+  .trigger( "change" );
+
+</script>
+
+<p><a href="/food_items">Add food items</a></p>
