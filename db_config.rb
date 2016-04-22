@@ -4,4 +4,4 @@ options = {
   adapter: 'postgresql',
   database: 'shakeitoff'
 }
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || options)`
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || options)
