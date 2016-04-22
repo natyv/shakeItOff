@@ -1,5 +1,4 @@
 require 'date'
-require 'pry'
 require 'json'
 
 require 'sinatra'
