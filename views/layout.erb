@@ -18,8 +18,14 @@
 
 </head>
 <body>
+  <div class="container-fluid">
 
-  <h1><a href="/">Shake It Off!</a></h1>
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Shake It Off!</a>
+      <p class="navbar-link navbar-right"><a href="/signup">Sign up</a></p>
+    </div>
+  </nav>
 
   <% if logged_in? %>
   logged in as <%= current_user.name %>
@@ -30,5 +36,5 @@
   <% end %>
 
   <%= yield %>
-
+  </div>
 </body>
