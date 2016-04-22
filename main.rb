@@ -2,7 +2,6 @@ require 'date'
 require 'json'
 
 require 'sinatra'
-require 'sinatra/reloader'
 require 'pg'
 
 require "./db_config"
