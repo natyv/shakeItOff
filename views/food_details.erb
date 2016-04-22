@@ -5,10 +5,19 @@
 
   <% if @single_result != nil %>
     <span><h3><%= @single_result["food_name"] %> </span></h3></br>
-    <% @single_result["servings"]["serving"].each do |x| %>
-      <span>Serving size: <%= x["serving_description"] %></span></br>
-      <span>Calories: <%= x["calories"] %></span></br>
+
+    <% if @single_result["food_type"] == "Brand" %>
+      <span>Serving size: <%= @single_result["servings"]["serving"]["serving_description"] %></span></br>
+      <span>Calories: <%= @single_result["servings"]["serving"]["calories"] %></span></br>
+      
+    <% else %>
+      <% @single_result["servings"]["serving"].each do |x| %>
+        <span>Serving size: <%= x["serving_description"] %></span></br>
+        <span>Calories: <%= x["calories"] %></span></br>
+
+      <% end %>
     <% end %>
+
   <% end %>
 
 </div>

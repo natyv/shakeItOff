@@ -22,7 +22,7 @@
   <option value="1.55">Moderately active</option>
   <option value="1.95">Very active</option>
 </select>
-<div></div>
+<p>You can consume <span></span> calories per day! </p>
 
 <script>
 $( "select" )
@@ -33,7 +33,7 @@ $( "select" )
       str = parseFloat(str) * <%= bmr %>;
       str = str.toString();
   });
-  $( "div" ).text( str );
+  $( "span" ).text( str );
 })
   .trigger( "change" );
 

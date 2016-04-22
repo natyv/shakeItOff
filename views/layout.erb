@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <title>Shake It Off</title>
 
+
   <link rel='stylesheet' href='/stylesheets/main.css'>
+  <link href='https://fonts.googleapis.com/css?family=Martel+Sans:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/stylesheets/jquery-ui.theme.min.css">
   <link rel="stylesheet" href="/stylesheets/jquery-ui.min.css">
   <link rel="stylesheet" href="/stylesheets/jquery-ui.structure.min.css">
@@ -16,19 +18,23 @@
   <script src="/javascripts/bootstrap.js"></script>
   <script src="/javascripts/bootstrap.min.js"></script>
 
+
 </head>
 <body>
-
-  <h1><a href="/">Shake It Off!</a></h1>
-
-  <% if logged_in? %>
-  logged in as <%= current_user.name %>
-  <form action="/" method="post">
-    <input type="hidden" value = "delete" name = "_method">
-    <button>logout</button>
-  </form>
-  <% end %>
+  <div class="container-fluid main_container">
+    <nav class="navbar navbar-default">
+      <h1><a href="/">Shake It Off!</a></h1>
+  <p class="navbar-text navbar-right">
+    <% if logged_in? %>
+    logged in as <%= current_user.name %>
+    <form action="/" method="post">
+      <input type="hidden" value = "delete" name = "_method">
+      <button>logout</button>
+    </form>
+    <% end %>
+  </p>
+</nav>
 
   <%= yield %>
-
+</div>
 </body>
