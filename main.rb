@@ -10,6 +10,8 @@ require './models/food_item'
 
 require 'fatsecret'
 FatSecret.init('12c2ef215e604e3f8ed6853dfe478390','7cb2062d9146486eb1a137ace3819a2a')
+# these should be in an ENV file to keep them save
+
 
 enable :sessions
 
