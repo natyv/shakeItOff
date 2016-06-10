@@ -1,4 +1,4 @@
-<form action="/food_items" method = "post">
+<form action="/food_items" method = "post" id="foodentry">
 
 <p>  <label for="">Food name</label>
   <input type="text" name="name"> </p>
@@ -11,6 +11,10 @@
 <button>Save</button>
 
 </form>
+
+<p id="foodlink"><a href="/food">Get food details >></a>
+
+<h4>Food Log</h4>
 
 <table>
   <thead>
@@ -37,10 +41,9 @@
   <% end %>
 </table>
 <form action="/food_items" method="post">
-  <button id="deleteButton" type = "button" name="delete">Delete selected</button>
+  <button id="deleteButton" type = "button" name="delete">Delete</button>
 </form>
 
-<a href="/food">Get food details</a>
 
 <div id="dialog" title="Shake it off!" style="display: none">
   <p>

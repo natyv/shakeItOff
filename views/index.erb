@@ -1,28 +1,28 @@
 
-<h2>User Details</h2>
+<h3>User Details</h3>
 <p>Name : <%= current_user.name %></p>
 <p>Age : <%= current_user.age %></p>
 <p>Weight(in kgs) : <%= current_user.weight %></p>
 <p>Height(in cms) : <%= current_user.height %></p>
 <p>Gender : <%= current_user.gender %></p>
 
-<a href="/edit"><button>Edit User Details</button></a>
+<a href="/edit"><button id="edituser">Edit User Details</button></a>
 
-<form action="/dashboard" method="post">
+<form action="/dashboard" method="post" id="deleteuser">
   <input type="hidden" value = "delete" name = "_method">
   <button type="submit" name="Delete">Delete User</button>
 </form>
 
 <p>Your Base Metabolic Rate is <%= bmr %> calories per day</p>
 
-<p>Choose your activity level</p>
+<p>Choose your activity level:</p>
 <select name="activity_level" id="target">
   <option value="1.2">Sedentary</option>
   <option value="1.375">Lightly active</option>
   <option value="1.55">Moderately active</option>
   <option value="1.95">Very active</option>
 </select>
-<p>You can consume <span></span> calories per day! </p>
+<p>You can consume <span id="cal"></span> calories per day! </p>
 
 <script>
 $( "select" )
@@ -39,4 +39,4 @@ $( "select" )
 
 </script>
 
-<p><a href="/food_items">Add food items</a></p>
+<p><button id="addfood"><a href="/food_items">Add food items</a></button></p>

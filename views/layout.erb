@@ -10,30 +10,27 @@
   <link rel="stylesheet" href="/stylesheets/jquery-ui.theme.min.css">
   <link rel="stylesheet" href="/stylesheets/jquery-ui.min.css">
   <link rel="stylesheet" href="/stylesheets/jquery-ui.structure.min.css">
-  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
-  <link rel="stylesheet" href="/stylesheets/bootstrap-theme.css">
-  <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+
   <script src = '/javascripts/jquery-2.2.3.min.js'></script>
   <script src="/javascripts/jquery-ui.min.js"></script>
-  <script src="/javascripts/bootstrap.js"></script>
-  <script src="/javascripts/bootstrap.min.js"></script>
+
 
 
 </head>
 <body>
-  <div class="container-fluid main_container">
-    <nav class="navbar navbar-default">
-      <h1><a href="/">Shake It Off!</a></h1>
-  <p class="navbar-text navbar-right">
+  <div class = "navbar">
+    <h2 ><a href="/">Shake It Off!</a></h2>
+
     <% if logged_in? %>
-    logged in as <%= current_user.name %>
-    <form action="/" method="post">
+    <div id="username">logged in as <%= current_user.name %></div>
+    <form action="/" method="post" id="logout">
       <input type="hidden" value = "delete" name = "_method">
-      <button>logout</button>
+      <button id="logout-btn">logout</button>
     </form>
     <% end %>
-  </p>
-</nav>
+  </div>
+    <div class="main_container">
+
 
   <%= yield %>
 </div>
